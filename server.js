@@ -15,7 +15,8 @@ app.post("/chat", async (req, res) => {
     // 🧠 Dein System Prompt hier:
     const systemMessage = {
       role: "system",
-      content: "Du bist ein freundlicher, hilfreicher KI-Assistent.",
+      content:
+        "Du bist ein freundlicher, hilfreicher KI-Assistent namens Noah.",
     };
 
     // 📦 Prompt + Verlauf zusammenführen
