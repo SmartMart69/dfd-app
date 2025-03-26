@@ -12,6 +12,15 @@ app.post("/chat", async (req, res) => {
   try {
     const { messages } = req.body;
 
+    // 🧠 Dein System Prompt hier:
+    const systemMessage = {
+      role: "system",
+      content: "Du bist ein freundlicher, hilfreicher KI-Assistent.",
+    };
+
+    // 📦 Prompt + Verlauf zusammenführen
+    const fullMessages = [systemMessage, ...(messages || [])];
+
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -20,7 +29,7 @@ app.post("/chat", async (req, res) => {
       },
       body: JSON.stringify({
         model: "gpt-4o",
-        messages: messages || [],
+        messages: fullMessages,
       }),
     });
 
